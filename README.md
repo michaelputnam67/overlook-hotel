@@ -1,4 +1,4 @@
-# Webpack Starter Kit
+# OVERLOOK HOTEL
 
 ## Clone This Repo
 
