@@ -1,11 +1,17 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+// ---- Imports ----
 import './css/styles.css';
+import apiCalls from './apiCalls'
+import domUpdates from './domUpdates'
+let dayjs = require('dayjs')
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+// ---- Dom Elements ----
+
+// ---- API calls ----
+
+// ---- Date ----
+
+let currentDay = dayjs(Date.now()).format('MM/DD/YYYY')
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
+
