@@ -1,10 +1,10 @@
 import chai from 'chai';
 const expect = chai.expect;
 import Booking from '../src/classes/booking'
-import {bookings} from '../src/sampleData/sample-data'
+import {bookings, rooms} from '../src/sampleData/sample-data'
 
 describe('Booking', function() {
-  let booking;
+  let booking
 
   beforeEach(() => {
     booking = new Booking(bookings[0])
