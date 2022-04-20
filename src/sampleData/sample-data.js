@@ -115,7 +115,7 @@ let rooms = [
 		}
 ]
 
-export default {
+module.exports = {
 	customers,
 	rooms,
 	bookings,
