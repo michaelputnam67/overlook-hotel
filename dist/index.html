@@ -7,10 +7,38 @@
 </head>
 <body>
   <nav>
-    <h1>Welcome, To The Overlook Hotel!</h1>
+    <h1 id="navTitle">Welcome, Neil!</h1>
+    <div>
+      <p class="total-cost" id="totalExpenditures">358$</p>
+    </div>
   </nav>
-  <header></header>
-  <main></main>
+  <main>
+    <section class="dashboard" id="dashboard">
+      <h1>Bookings</h1>
+      <sidebar class="sidebar">
+        <div>
+          <form id="form">
+            <h2>Add Booking</h2>
+            <label for="select">Check Availability:</label><br>
+            <input type="date" id="select" name="select-date" required><br>
+            <div class="roomtype hidden" id="roomType">
+              <label for="selectType">Choose Room Type:</label><br>
+              <select type="dropdown" id="selectType" name="type" >
+                <option value="">--Please choose an option--</option>
+                <option value="residential suite">Residential Suite</option>
+                <option value="suite">Suite</option>
+                <option value="single room">Single Room</option>
+                <option value="junior suite">Junior Suite</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <section class="available-rooms" id="availableRooms"></section>
+      </sidebar>
+        <section class="bookings-container" id="bookingsContainer">
+        </section>
+    </section>
+  </main>
   <script src="bundle.js"></script>
 </body>
 </html>
