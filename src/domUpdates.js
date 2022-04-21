@@ -4,16 +4,27 @@ let daysjs = require('dayjs')
 const domUpdates = {
 	renderPage (customer, hotel, addBooking) {
 		this.renderNav(customer)
-		this.renderDashboard(customer)
+		this.renderCurrentBookings(customer)
 		this.renderSideBar(customer)
+		this.renderTotalExpenditures(customer)
 	},
 
 	renderNav(customer) {
 		dom.headerTitle.innerText = `Welcome, ${customer.name}!`
-		dom.totalExpenditures.innerText = `Total Expenditures: $${Math.round(customer.calculateTotalExpenditures())}`
 	},
 
-	renderDashboard(customer) {
+	renderDashboard(customer, rooms) {
+		this.renderAvailableRooms(rooms)
+		this.renderCurrentBookings(customer)
+		this.renderTotalExpenditures(customer)
+	},
+
+	renderTotalExpenditures(customer) {
+		dom.totalCost.innerText = `Total Expenditures: $${Math.round(customer.calculateTotalExpenditures())}`
+	},
+
+	renderCurrentBookings(customer) {
+		dom.bookingsContainer.innerHTML = ''
 		customer.bookings.forEach(booking => {
 			dom.bookingsContainer.innerHTML += `
 				<div class="booking">
@@ -30,10 +41,26 @@ const domUpdates = {
 	},
 
 	renderSideBar(customer) {
-		dom.calendar.value = `${daysjs(Date.now()).format('YYYY-MM-DD')}`	
+		dom.calendar.value = `${daysjs(Date.now()).format('YYYY-MM-DD')}`
+		dom.calendar.min = `${daysjs(Date.now()).format('YYYY-MM-DD')}`
+	},
+
+	renderFuriousApology() {
+		dom.response.innerText = "We are so sorry, but there are no rooms available that day please select another date"
+	},
+
+	renderForm(rooms) {
+		dom.roomType.classList.remove('hidden')
+		dom.response.innerText = `There are ${rooms.length} available rooms, which match this criteria.`
 	},
 
 	renderAvailableRooms(rooms) {
+		if(!rooms.length) {
+			this.renderFuriousApology()
+		} else {
+			dom.response.innerText = ''
+			this.renderForm(rooms)
+		}
 		dom.availableRooms.innerHTML = ''
 		let hasBidet = (room) => {
 			if(room.bidet) {

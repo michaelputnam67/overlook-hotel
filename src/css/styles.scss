@@ -23,7 +23,6 @@
 		ul {
 			@include list();
 		}
-
 	}
 }
 
@@ -71,8 +70,11 @@ main {
 				@include test();
 			}
 		}
-		h1 {
+		.current-bookings-header {
+			display: flex;
 			text-align: center;
+			justify-content: space-around;
+			align-items: center;
 			grid-column-start: 1;
 			grid-column-end: span 2;
 			grid-row-start: 1;

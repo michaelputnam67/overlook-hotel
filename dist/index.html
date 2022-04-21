@@ -8,13 +8,13 @@
 <body>
   <nav>
     <h1 id="navTitle">Welcome, Neil!</h1>
-    <div>
-      <p class="total-cost" id="totalExpenditures">358$</p>
-    </div>
   </nav>
   <main>
     <section class="dashboard" id="dashboard">
-      <h1>Bookings</h1>
+      <div class="current-bookings-header" id="currentBookingsHeader">
+        <h1>Bookings</h1>
+        <p id="totalCost">Total Expenditures</p>
+      </div>
       <sidebar class="sidebar">
         <div>
           <form id="form">
@@ -31,6 +31,7 @@
                 <option value="junior suite">Junior Suite</option>
               </select>
             </div>
+            <p id="response"></p>
           </form>
         </div>
         <section class="available-rooms" id="availableRooms"></section>

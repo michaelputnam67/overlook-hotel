@@ -1,5 +1,8 @@
 
 let dom = {
+	response: document.getElementById('response'),
+	totalCost: document.getElementById('totalCost'),
+	currentBookingsHeader: document.getElementById('currentBookingsHeader'),
 	type: document.getElementById('selectType'),
 	roomType: document.getElementById('roomType'),
 	availableRooms: document.getElementById('availableRooms'),

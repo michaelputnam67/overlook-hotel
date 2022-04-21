@@ -2,7 +2,12 @@
 
 let getData = (dataset) => fetch(`http://localhost:3001/api/v1/${dataset}`).then(res => res.json()).catch(error => console.log(error));
 
+
+let getBookings = () => fetch('http://localhost:3001/api/v1/bookings').then(res => res.json()).catch(error => console.log(error))
+
+
 let getSpecificCustomer = (id) => fetch(`http://localhost:3001/api/v1/customers/${id}`).then(res => res.json()).catch(error => console.log(error))
+
 
 // ---- Post Request ----
 
@@ -34,7 +39,7 @@ let deleteSingleBooking = (id) => fetch(`http://localhost:3001/api/v1/bookings/$
 
 // ---- Promise All ----
 
-let apiCalls = Promise.all([getData('customers'), getData('rooms'), getData('bookings'), addBooking, getSpecificCustomer, deleteSingleBooking]);
+let apiCalls = Promise.all([getData('customers'), getData('rooms'), getData('bookings'), addBooking, getSpecificCustomer, deleteSingleBooking, getBookings]);
 
 
 

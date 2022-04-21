@@ -6,25 +6,27 @@ import apiCalls from './apiCalls'
 import domUpdates from './domUpdates'
 let dayjs = require('dayjs')
 
+// ---- API calls ----
 apiCalls.then(call => {
 	 let customers = call[0].customers;
 	 let rooms = call[1].rooms;
 	 let bookings = call[2].bookings;
-	 let addBooking = call[3]
-	 loadData(customers, rooms, bookings, addBooking)
+	 let addBooking = call[3];
+	 let getBookings = call[6];
+	 loadData(customers, rooms, bookings, addBooking, getBookings);
 	})
 	
 	// ---- Dom Elements ----
-	let loadData = (customers, rooms, bookings, addBooking) => {
+	let loadData = (customers, rooms, bookings, addBooking, getBookings) => {
 		let hotel = new Hotel(customers, rooms, bookings)
 		let customer = hotel.determineCurrentCustomer()
 		domUpdates.renderPage(customer, hotel, addBooking)
-		createEventListeners(hotel, addBooking)
+		createEventListeners(hotel, addBooking, getBookings)
 }
 
-let createEventListeners = (hotel, addBooking) => {
+let createEventListeners = (hotel, addBooking, getBookings) => {
 	dom.availableRooms.addEventListener('click', (e) => {
-		handleAddBooking(e, hotel, addBooking)
+		handleAddBooking(e, hotel, addBooking, getBookings)
 	})
 
 	dom.form.addEventListener('input', (e) => {
@@ -33,13 +35,14 @@ let createEventListeners = (hotel, addBooking) => {
 }
 
 
-// ---- API calls ----
 
 // ---- Date ----
 
+
+
 // ---- Event Handlers ----
 
-let handleAddBooking = (e, hotel, addBooking) => {
+let handleAddBooking = (e, hotel, addBooking, getBookings) => {
 	if(e.target.dataset.bookingid === 'addBooking') {
 		let data = {
 			"userID": hotel.currentCustomer.id,
@@ -47,9 +50,16 @@ let handleAddBooking = (e, hotel, addBooking) => {
 			"roomNumber": parseInt(e.target.id),
 		} 
 		addBooking(data).then(res => console.log(res)).then(() => {
-			console.log('test')
+			let output = getBookings()
+			return output
+		}).then((data) => {
+			// updateDataModel(data)
+			let output = hotel.saveBookings(data.bookings);
+			hotel.bookings = output
+			hotel.currentCustomer.getCurrentBookings(hotel.bookings, hotel.rooms);
+			let rooms = hotel.checkAvailability(dom.calendar.value);
+			domUpdates.renderDashboard(hotel.currentCustomer, rooms)
 		})
-		// chain .thens to rerender and populate customer data
 	}
 }
 
@@ -59,7 +69,7 @@ let handleBookingForm = (e, hotel) => {
 		hotel.checkAvailability(e.target.value)
 		output = hotel.availableRooms
 		domUpdates.renderAvailableRooms(output)
-		dom.roomType.classList.remove('hidden')
+
 	} else if(e.target.name === 'type') {
 		output = hotel.filterRoomsByType(e.target.value)
 		domUpdates.renderAvailableRooms(output)

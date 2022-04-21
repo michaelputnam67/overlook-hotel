@@ -17,7 +17,7 @@ import Customer from './customer'
 		})
 		let checkRooms = (room) => {
 			return conflicts.reduce((acc, conflict) => {
-				if(conflict.roomInfo.roomNumber === room.number) {
+				if(conflict.roomNumber === room.number) {
 					acc = false
 				} 
 				return acc
@@ -35,9 +35,9 @@ import Customer from './customer'
 
 	collectCustomerData(customers) {
 		return customers.map((customer) => {
-			let output = new Customer(customer)
-			output.getBookings(this.bookings, this.rooms)
-			return output
+			let newCustomer = new Customer(customer)
+			newCustomer.getCurrentBookings(this.bookings, this.rooms)
+			return newCustomer
 		})
 	}
 
@@ -45,7 +45,6 @@ import Customer from './customer'
 		let randomIndex = Math.floor(Math.random() * this.customers.length)
 		this.currentCustomer = this.customers[randomIndex]
 		return this.currentCustomer
-
 	}
 
 	filterRoomsByType(type) {

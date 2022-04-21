@@ -102,8 +102,16 @@ main .dashboard .sidebar .available-rooms .booking ul {
   list-style-type: none;
 }
 
-main .dashboard h1 {
+main .dashboard .current-bookings-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   text-align: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-grid-column: 1;
       grid-column-start: 1;
   -ms-grid-column-span: 2;
