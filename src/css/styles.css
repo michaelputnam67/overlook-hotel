@@ -23,21 +23,101 @@ html {
 }
 
 main .dashboard {
+  height: 90vh;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr .5fr 1fr;
+      grid-template-columns: 1fr .5fr 1fr;
+  -ms-grid-rows: 30px .1fr 1fr;
+      grid-template-rows: 30px .1fr 1fr;
+}
+
+main .dashboard .sidebar {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  -ms-grid-row-span: 3;
+      grid-row-end: span 3;
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+}
+
+main .dashboard .sidebar form {
+  border: black solid 2px;
+  height: 20vh;
+  width: 100%;
+}
+
+main .dashboard .sidebar .available-rooms {
+  border: black solid 2px;
+  height: 80vh;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: row;
+  overflow-y: scroll;
+}
+
+main .dashboard .sidebar .available-rooms .booking {
+  background: #1d1d32;
+  border: 2px solid black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 200px;
+  width: 200px;
+}
+
+main .dashboard .sidebar .available-rooms .booking ul {
+  height: 90%;
+  width: 90%;
+  background: #bbe3f3;
+  padding: 0;
+  padding-left: 30px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  list-style-type: none;
+}
+
+main .dashboard h1 {
+  text-align: center;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  -ms-grid-column-span: 2;
+      grid-column-end: span 2;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
 }
 
 main .dashboard .bookings-container {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 2;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  -ms-grid-column-span: 2;
+      grid-column-end: span 2;
   height: 100vh;
-  width: 60%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,6 +135,7 @@ main .dashboard .bookings-container {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  overflow-y: scroll;
 }
 
 main .dashboard .bookings-container .booking {
@@ -93,5 +174,9 @@ main .dashboard .bookings-container .booking ul {
       -ms-flex-direction: column;
           flex-direction: column;
   list-style-type: none;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=styles.css.map */

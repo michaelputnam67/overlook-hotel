@@ -2,9 +2,10 @@ import dom from './dom-elements'
 let daysjs = require('dayjs')
 
 const domUpdates = {
-	renderPage (customer) {
+	renderPage (customer, hotel, addBooking) {
 		this.renderNav(customer)
 		this.renderDashboard(customer)
+		this.renderSideBar(customer)
 	},
 
 	renderNav(customer) {
@@ -25,6 +26,34 @@ const domUpdates = {
 						<li>Cost Per Night: ${booking.roomInfo.costPerNight}</li>
 					</ul>
 				</div>`
+		})
+	},
+
+	renderSideBar(customer) {
+		dom.calendar.value = `${daysjs(Date.now()).format('YYYY-MM-DD')}`	
+	},
+
+	renderAvailableRooms(rooms) {
+		dom.availableRooms.innerHTML = ''
+		let hasBidet = (room) => {
+			if(room.bidet) {
+				return `<li>Bidet Included!</li>`
+			} else {
+				return `<li class="hidden">Bidet Included!</li>`
+			}
+		}
+		rooms.forEach((room) => {
+			dom.availableRooms.innerHTML += `
+			<div class="booking">
+				<ul>
+					<li>Room Number: ${room.number}</li>
+					<li>Room Type: ${room.roomType.toUpperCase()}</li>
+					<li>Bed Size: ${room.bedSize.toUpperCase()}</li>
+					${hasBidet(room)}
+					<li>Cost Per Night: ${room.costPerNight}</li>
+				</ul>
+				<button data-bookingid="addBooking" id=${room.number}>BOOK</button>
+			</div>`
 		})
 	},
 }

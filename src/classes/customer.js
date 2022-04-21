@@ -9,10 +9,9 @@ class Customer {
 	}
 
 	getBookings(bookings, rooms) {
-		this.bookings = bookings.filter((booking) => booking.userID === this.id).map((booking) => {
-			booking = new Booking(booking)
+		this.bookings = bookings.filter((booking) => booking.userID === this.id)
+		this.bookings.forEach(booking => {
 			booking.getRoomInfo(rooms)
-			return booking
 		})
 	}
 
