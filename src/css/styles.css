@@ -80,6 +80,10 @@ main .dashboard .sidebar .available-rooms .booking {
   width: 200px;
 }
 
+main .dashboard .sidebar .available-rooms .booking h3 {
+  color: white;
+}
+
 main .dashboard .sidebar .available-rooms .booking ul {
   height: 90%;
   width: 90%;
@@ -168,6 +172,10 @@ main .dashboard .bookings-container .booking {
           flex-direction: column;
   height: 200px;
   width: 200px;
+}
+
+main .dashboard .bookings-container .booking h3 {
+  color: white;
 }
 
 main .dashboard .bookings-container .booking ul {

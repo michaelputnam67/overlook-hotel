@@ -20,6 +20,9 @@
 @mixin test() {
 	.booking {
 		@include booking();
+		h3 {
+			color: white;
+		}
 		ul {
 			@include list();
 		}

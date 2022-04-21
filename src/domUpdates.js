@@ -28,8 +28,8 @@ const domUpdates = {
 		customer.bookings.forEach(booking => {
 			dom.bookingsContainer.innerHTML += `
 				<div class="booking">
+				<h3>Booking:</h3>
 					<ul>
-						<h3>Booking:</h3>
 						<li>Date: ${booking.date}</li>
 						<li>Room Number: ${booking.roomNumber}</li>
 						<li>${booking.roomInfo.roomType.toUpperCase()}</li>
