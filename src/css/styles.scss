@@ -1,49 +1,50 @@
 @import './variables';
 @import './nav';
+@import './mixins';
 
 
-@mixin grid() {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr;
-	grid-template-areas: 'overlap';
-}
+// @mixin grid() {
+// 	display: grid;
+// 	grid-template-columns: 1fr;
+// 	grid-template-rows: 1fr;
+// 	grid-template-areas: 'overlap';
+// }
 
-@mixin booking() {
-	background: rgb(29, 29, 50);
-	border: 2px solid black;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	height: 200px;
-	width: 200px;
-}
+// @mixin booking() {
+// 	background: rgb(29, 29, 50);
+// 	border: 2px solid black;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	flex-direction: column;
+// 	height: 200px;
+// 	width: 200px;
+// }
 
-@mixin test() {
-	.booking {
-		@include booking();
-		h3 {
-			color: white;
-		}
-		ul {
-			@include list();
-		}
-	}
-}
+// @mixin test() {
+// 	.booking {
+// 		@include booking();
+// 		h3 {
+// 			color: white;
+// 		}
+// 		ul {
+// 			@include list();
+// 		}
+// 	}
+// }
 
-@mixin list() {
-	height: 90%;
-	width: 90%;
-	background: rgb(187,227,243);
-	padding: 0;
-	padding-left: 30px;
-	align-items: start;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	list-style-type: none;
-}
+// @mixin list() {
+// 	height: 90%;
+// 	width: 90%;
+// 	background: rgb(187,227,243);
+// 	padding: 0;
+// 	padding-left: 30px;
+// 	align-items: start;
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	list-style-type: none;
+// }
 
 * {
 	margin: 0px;
@@ -75,16 +76,20 @@ body {
 			form {
 				height: 100%;
 				width: 100%;
-				@include grid();
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr .5fr 1fr;
 				div:nth-child(1) {
-					grid-area: overlap;
+					justify-self: center;
+					align-self: end;
+				}
+				div:nth-child(2) {
 					justify-self: center;
 					align-self: center;
 				}
-				div:nth-child(2) {
-					grid-area: overlap;
+				div:nth-child(3) {
 					justify-self: center;
-					align-self: center;
+					align-self: start;
 				}
 			}
 		}

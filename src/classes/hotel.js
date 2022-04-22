@@ -6,7 +6,7 @@ import Customer from './customer'
 		this.bookings = this.saveBookings(bookings);
 		this.rooms = rooms;
 		this.customers = this.collectCustomerData(customers);
-		this.currentCustomer;
+		this.currentUser;
 		this.availableRooms;
 	}
 
@@ -41,11 +41,20 @@ import Customer from './customer'
 		})
 	}
 
-	determineCurrentCustomer () {
-		let randomIndex = Math.floor(Math.random() * this.customers.length)
-		this.currentCustomer = this.customers[randomIndex]
-		return this.currentCustomer
+	loginUser(username, password) {
+		let getId = (input) => {
+			return input.split('').filter((ele) => !isNaN(ele)).join('')
+		}
+		let checkUsername = (name) => {
+			return this.customers.find((customer) => customer.id === parseInt(getId(name)))}
+
+		if(password === 'overlook2021' && checkUsername(username)) {
+			this.currentUser = checkUsername(username)
+		} else {
+			return 'Invalid login credentials, Please check your username and password.'
+		}
 	}
+
 
 	filterRoomsByType(type) {
 		let roomsByType = this.availableRooms

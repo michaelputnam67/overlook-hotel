@@ -21,7 +21,8 @@ apiCalls.then(call => {
 	// ---- Dom Elements ----
 	let loadData = (customers, rooms, bookings, addBooking, getBookings) => {
 		let hotel = new Hotel(customers, rooms, bookings)
-		let customer = hotel.determineCurrentCustomer()
+		hotel.loginUser('customer1', 'overlook2021')
+		let customer = hotel.currentUser
 		domUpdates.renderPage(customer, hotel, addBooking)
 		createEventListeners(hotel, addBooking, getBookings)
 }
@@ -34,6 +35,12 @@ let createEventListeners = (hotel, addBooking, getBookings) => {
 	dom.form.addEventListener('input', (e) => {
 		handleBookingForm(e, hotel)
 	})
+
+	dom.login.addEventListener('click', (e) => {
+		console.log(e.value)
+	})
+
+
 }
 
 
@@ -47,7 +54,7 @@ let createEventListeners = (hotel, addBooking, getBookings) => {
 let handleAddBooking = (e, hotel, addBooking, getBookings) => {
 	if(e.target.dataset.bookingid === 'addBooking') {
 		let data = {
-			"userID": hotel.currentCustomer.id,
+			"userID": hotel.currentUser.id,
 			"date": `${dom.calendar.value.split('-').join('/')}`,
 			"roomNumber": parseInt(e.target.id),
 		} 
@@ -58,9 +65,9 @@ let handleAddBooking = (e, hotel, addBooking, getBookings) => {
 			// updateDataModel(data)
 			let output = hotel.saveBookings(data.bookings);
 			hotel.bookings = output
-			hotel.currentCustomer.getCurrentBookings(hotel.bookings, hotel.rooms);
+			hotel.currentUser.getCurrentBookings(hotel.bookings, hotel.rooms);
 			let rooms = hotel.checkAvailability(dom.calendar.value);
-			domUpdates.renderDashboard(hotel.currentCustomer, rooms)
+			domUpdates.renderDashboard(hotel.currentUser, rooms)
 		})
 	}
 }

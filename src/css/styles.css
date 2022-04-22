@@ -41,8 +41,10 @@ body .login {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: overlap;
+  -ms-grid-column-align: center;
       justify-self: center;
   -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
       align-self: center;
   place-self: center;
   background: #d6e2d6;
@@ -60,15 +62,19 @@ body .login section form {
   display: grid;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-      grid-template-areas: 'overlap';
+  -ms-grid-rows: 1fr .5fr 1fr;
+      grid-template-rows: 1fr .5fr 1fr;
 }
 
 body .login section form div:nth-child(1) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: overlap;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+body .login section form div:nth-child(2) {
   -ms-grid-column-align: center;
       justify-self: center;
   -ms-flex-item-align: center;
@@ -76,15 +82,12 @@ body .login section form div:nth-child(1) {
       align-self: center;
 }
 
-body .login section form div:nth-child(2) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: overlap;
+body .login section form div:nth-child(3) {
   -ms-grid-column-align: center;
       justify-self: center;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
 }
 
 main .dashboard {

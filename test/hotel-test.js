@@ -24,10 +24,25 @@ describe.only('Hotel', () => {
 		expect(hotel.rooms).to.deep.equal(rooms);
 	})
 
-	// it('should be able to store bookings unique to the customer', () => {
-	// 	customer.getBookings(bookings, rooms)
-	// 	expect(customer.bookings[0].id).to.equal(booking.id);
-	// })
+	it('should store data on all the customers', () => {
+		expect(hotel.customers[2].name).to.equal(customers[2].name);
+	})
 
+	it('should store data on all the bookings', () => {
+		expect(hotel.bookings[2].userID).to.equal(bookings[2].userID)
+	})
 
+	it('should be able to determine the currentUser', () => {
+		let username = 'customer1';
+		let password = 'overlook2021';
+		hotel.loginUser(username, password)
+		expect(hotel.currentUser.name).to.deep.equal(customer.name)
+	})
+
+	it('should let the user know their login information is incorrect', () => {
+		let username = 'customer2';
+		let password = 'ovelok2022';
+		let output = hotel.loginUser(username, password)
+		expect(output).to.equal('Invalid login credentials, Please check your username and password.')
+	})
 })

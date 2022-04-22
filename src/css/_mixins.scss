@@ -1,0 +1,42 @@
+@mixin grid() {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: 'overlap';
+}
+
+@mixin booking() {
+	background: rgb(29, 29, 50);
+	border: 2px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 200px;
+	width: 200px;
+}
+
+@mixin test() {
+	.booking {
+		@include booking();
+		h3 {
+			color: white;
+		}
+		ul {
+			@include list();
+		}
+	}
+}
+
+@mixin list() {
+	height: 90%;
+	width: 90%;
+	background: rgb(187,227,243);
+	padding: 0;
+	padding-left: 30px;
+	align-items: start;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	list-style-type: none;
+}

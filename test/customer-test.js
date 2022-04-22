@@ -5,7 +5,7 @@ import Booking from '../src/classes/booking'
 import Customer from '../src/classes/customer'
 import {customers, bookings, rooms} from '../src/sampleData/sample-data'
 
-describe.only('Customer', () => {
+describe('Customer', () => {
 	let customer, booking, room;
 
 	beforeEach(() => {
