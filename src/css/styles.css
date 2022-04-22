@@ -15,15 +15,80 @@ nav {
 }
 
 * {
-  margin: 0;
+  margin: 0px;
 }
 
-html {
-  background: #dae9eb;
+body {
+  height: 100vh;
+  width: 100%;
+  background: url("../images/trees-background.jpg");
+  background-size: cover;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: 'overlap';
+}
+
+body .login {
+  height: 400px;
+  width: 600px;
+  opacity: 80%;
+  border-radius: 15px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: overlap;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  place-self: center;
+  background: #d6e2d6;
+}
+
+body .login section {
+  height: 100%;
+  width: 100%;
+}
+
+body .login section form {
+  height: 100%;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: 'overlap';
+}
+
+body .login section form div:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: overlap;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+body .login section form div:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: overlap;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 main .dashboard {
-  height: 90vh;
+  height: 100%;
   width: 100%;
   display: -ms-grid;
   display: grid;

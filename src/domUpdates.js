@@ -1,5 +1,6 @@
 import dom from './dom-elements'
 let daysjs = require('dayjs')
+import './images/trees-background.jpg'
 
 const domUpdates = {
 	renderPage (customer, hotel, addBooking) {

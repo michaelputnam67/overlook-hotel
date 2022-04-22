@@ -1,5 +1,6 @@
 
 let dom = {
+	login: document.getElementById('login'),
 	response: document.getElementById('response'),
 	totalCost: document.getElementById('totalCost'),
 	currentBookingsHeader: document.getElementById('currentBookingsHeader'),

@@ -1,9 +1,11 @@
 // ---- Imports ----
-import dom from './dom-elements'
-import Hotel from './classes/hotel'
+import dom from './dom-elements';
+import Hotel from './classes/hotel';
 import './css/styles.css';
-import apiCalls from './apiCalls'
-import domUpdates from './domUpdates'
+import apiCalls from './apiCalls';
+import domUpdates from './domUpdates';
+import './images/trees-background.jpg';
+
 let dayjs = require('dayjs')
 
 // ---- API calls ----
