@@ -62,11 +62,13 @@ body .login section form {
   display: grid;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 1fr .5fr 1fr;
-      grid-template-rows: 1fr .5fr 1fr;
+  -ms-grid-rows: 1fr .3fr .2fr 1fr;
+      grid-template-rows: 1fr .3fr .2fr 1fr;
 }
 
 body .login section form div:nth-child(1) {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
   -ms-grid-column-align: center;
       justify-self: center;
   -ms-flex-item-align: end;
@@ -75,6 +77,8 @@ body .login section form div:nth-child(1) {
 }
 
 body .login section form div:nth-child(2) {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
   -ms-grid-column-align: center;
       justify-self: center;
   -ms-flex-item-align: center;
@@ -83,11 +87,24 @@ body .login section form div:nth-child(2) {
 }
 
 body .login section form div:nth-child(3) {
+  -ms-grid-row: 4;
+      grid-row-start: 4;
   -ms-grid-column-align: center;
       justify-self: center;
   -ms-flex-item-align: start;
       -ms-grid-row-align: start;
       align-self: start;
+}
+
+body .login section form p {
+  color: red;
+  -ms-grid-row: 3;
+      grid-row-start: 3;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 main .dashboard {

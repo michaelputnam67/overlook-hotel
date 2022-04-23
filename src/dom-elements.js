@@ -1,6 +1,8 @@
 
 let dom = {
-	login: document.getElementById('loginButton'),
+	loginError: document.querySelector('.login-error'),
+	loginTest: document.querySelectorAll('#loginForm input'),
+	login: document.getElementById('loginForm'),
 	response: document.getElementById('response'),
 	totalCost: document.getElementById('totalCost'),
 	currentBookingsHeader: document.getElementById('currentBookingsHeader'),

@@ -41,7 +41,7 @@ import Customer from './customer'
 		})
 	}
 
-	loginUser(username, password) {
+	checkLoginInfo(username, password) {
 		let getId = (input) => {
 			return input.split('').filter((ele) => !isNaN(ele)).join('')
 		}
@@ -49,10 +49,16 @@ import Customer from './customer'
 			return this.customers.find((customer) => customer.id === parseInt(getId(name)))}
 
 		if(password === 'overlook2021' && checkUsername(username)) {
-			this.currentUser = checkUsername(username)
+			return checkUsername(username)
 		} else {
 			return 'Invalid login credentials, Please check your username and password.'
 		}
+	}
+
+	loginUser(user) {
+		 this.currentUser = this.customers.find((customer) => {
+			 return customer.id === user.id
+		 })
 	}
 
 

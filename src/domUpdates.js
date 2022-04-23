@@ -10,6 +10,10 @@ const domUpdates = {
 		this.renderTotalExpenditures(customer)
 	},
 
+	renderUserError(message) {
+		dom.login.innerHTML += `<p class="login-error">${message}</p>`
+	},
+
 	renderNav(customer) {
 		dom.headerTitle.innerText = `Welcome, ${customer.name}!`
 	},
