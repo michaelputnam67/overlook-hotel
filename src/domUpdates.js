@@ -4,14 +4,22 @@ import './images/trees-background.jpg'
 
 const domUpdates = {
 	renderPage (customer, hotel, addBooking) {
+		this.toggleHiddenElements();
 		this.renderNav(customer)
 		this.renderCurrentBookings(customer)
 		this.renderSideBar(customer)
 		this.renderTotalExpenditures(customer)
 	},
 
+	toggleHiddenElements() {
+		dom.main.classList.remove('hidden')
+		dom.login.classList.add('hidden')
+		dom.dashboard.classList.remove('hidden')
+		dom.nav.classList.remove('hidden')
+	},
+
 	renderUserError(message) {
-		dom.login.innerHTML += `<p class="login-error">${message}</p>`
+		dom.loginError.innerText = `${message}`
 	},
 
 	renderNav(customer) {

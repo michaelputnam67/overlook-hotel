@@ -40,19 +40,16 @@ let getUser = (id) => {
 let createEventListeners = (hotel, addBooking, getBookings) => {
 	dom.availableRooms.addEventListener('click', (e) => {
 		handleAddBooking(e, hotel, addBooking, getBookings)
-	})
+	});
 
 	dom.form.addEventListener('input', (e) => {
 		handleBookingForm(e, hotel)
-	})
+	});
 
-	dom.login.addEventListener('submit', (e) => {
-		console.log(Array.from(e.target, (input) => ({
-			[input.name]: input.value
-		})).filter(input) )
+	dom.loginForm.addEventListener('submit', (e) => {
 		e.preventDefault();
-		submitUserInformation(hotel, addBooking);	
-	})
+		submitUserInformation(hotel, addBooking, e);	
+	});
 }
 
 
@@ -63,15 +60,20 @@ let createEventListeners = (hotel, addBooking, getBookings) => {
 
 // ---- Event Handlers ----
 
-let getLoginInfo = () => {
-	return Array.from(dom.loginTest).reduce((acc, input) => ({ ...acc, [input.id]: input.value
-	}), {});
+let getLoginInfo = (e) => {
+	return Array.from(e.target, (input) => ({
+		[input.name]: input.value
+	})).filter((input) => {
+		return Object.values(input).join('')		
+	}).reduce((acc, input) => {
+		acc[Object.keys(input).join('')] = Object.values(input).join('')
+		return acc
+	}, {})
 }
 
-let submitUserInformation = (hotel, addBooking) => {
-
-	let loginInfo = getLoginInfo();
-	let user = hotel.checkLoginInfo(loginInfo.userName, loginInfo.password)
+let submitUserInformation = (hotel, addBooking, e) => {
+	let loginInfo = getLoginInfo(e);
+	let user = hotel.checkLoginInfo(loginInfo['user-name'], loginInfo.password)
 	if(user !== 'Invalid login credentials, Please check your username and password.') {
 		getUser(user.id).then((user) => {
 			hotel.loginUser(user)
@@ -81,8 +83,6 @@ let submitUserInformation = (hotel, addBooking) => {
 	} else {
 		domUpdates.renderUserError(user)
 	}
-	// if(user !== 'Invalid login credentials, Please check your username and password.') {
-	// }
 }
 
 

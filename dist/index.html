@@ -7,7 +7,7 @@
 </head>
 <title>OverLook Hotel</title>
 <body>
-  <nav class="nav hidden">
+  <nav class="nav hidden" id="nav">
     <h1 id="navTitle">Welcome, Neil!</h1>
   </nav>
   <div class="login" id="login">
@@ -24,10 +24,11 @@
         <div>
           <button id="loginButton">Login</button>
         </div>
+        <legend id="loginError"></legend>
       </form>
     </section>
   </div>
-  <main class="hidden">
+  <main class="hidden" id="main">
     <section class="dashboard hidden" id="dashboard">
       <div class="current-bookings-header" id="currentBookingsHeader">
         <h1>Bookings</h1>

@@ -1,8 +1,11 @@
 
 let dom = {
-	loginError: document.querySelector('.login-error'),
+	nav: document.getElementById('nav'),
+	main: document.getElementById('main'),
+	loginError: document.getElementById('loginError'),
 	loginTest: document.querySelectorAll('#loginForm input'),
-	login: document.getElementById('loginForm'),
+	login: document.getElementById('login'),
+	loginForm: document.getElementById('loginForm'),
 	response: document.getElementById('response'),
 	totalCost: document.getElementById('totalCost'),
 	currentBookingsHeader: document.getElementById('currentBookingsHeader'),

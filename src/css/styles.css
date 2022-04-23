@@ -96,7 +96,7 @@ body .login section form div:nth-child(3) {
       align-self: start;
 }
 
-body .login section form p {
+body .login section form legend {
   color: red;
   -ms-grid-row: 3;
       grid-row-start: 3;
