@@ -4,17 +4,39 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
-<body>
-  <nav>
+<title>OverLook Hotel</title>
+<body class="body-background">
+  <div class="login" id="login">
+    <section>
+      <form id="loginForm">
+        <div>
+          <label for="userName">Username</label>
+          <input type="search" id='userName' placeholder="username" name="user-name" required>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" value="overlook2021" id="password" placeholder="password" name="password" required>
+        </div>
+        <div>
+          <button id="loginButton">Login</button>
+        </div>
+        <legend id="loginError"></legend>
+      </form>
+    </section>
+  </div>
+  <nav class="nav hidden" id="nav">
     <h1 id="navTitle">Welcome, Neil!</h1>
-    <div>
-      <p class="total-cost" id="totalExpenditures">358$</p>
-    </div>
   </nav>
-  <main>
-    <section class="dashboard" id="dashboard">
-      <h1>Bookings</h1>
+  <main class="hidden" id="main">
+    <section class="dashboard hidden" id="dashboard">
+      <div class="current-bookings-header" id="currentBookingsHeader">
+        <h1>Bookings</h1>
+        <p id="totalCost">Total Expenditures</p>
+      </div>
       <sidebar class="sidebar">
         <div>
           <form id="form">
@@ -31,6 +53,7 @@
                 <option value="junior suite">Junior Suite</option>
               </select>
             </div>
+            <p id="response"></p>
           </form>
         </div>
         <section class="available-rooms" id="availableRooms"></section>

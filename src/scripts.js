@@ -1,55 +1,96 @@
 // ---- Imports ----
-import dom from './dom-elements'
-import Hotel from './classes/hotel'
-import './css/styles.css';
-import apiCalls from './apiCalls'
-import domUpdates from './domUpdates'
+import dom from './dom-elements';
+import Hotel from './classes/hotel';
+import './css/styles.scss';
+import apiCalls from './apiCalls';
+import domUpdates from './domUpdates';
+import './images/trees-background.jpg';
+
 let dayjs = require('dayjs')
 
-apiCalls.then(call => {
-	 let customers = call[0].customers;
-	 let rooms = call[1].rooms;
-	 let bookings = call[2].bookings;
-	 let addBooking = call[3]
-	 loadData(customers, rooms, bookings, addBooking)
-	})
+// ---- API calls ----
+let getUser = (id) => {
+	return apiCalls.then(call => {
+			let getUserData = call[4]
+		return getUserData(id)
+		})
+}	
+
+	apiCalls.then(call => {
+		 let customers = call[0].customers;
+		 let rooms = call[1].rooms;
+		 let bookings = call[2].bookings;
+		 let addBooking = call[3];
+		 let getBookings = call[6];
+		 loadData(customers, rooms, bookings, addBooking, getBookings);
+		})
+
+	let loadData = (customers, rooms, bookings, addBooking, getBookings) => {
+		let hotel = new Hotel(customers, rooms, bookings)
+		createEventListeners(hotel, addBooking, getBookings)
+		}
 	
 	// ---- Dom Elements ----
-	let loadData = (customers, rooms, bookings, addBooking) => {
-		let hotel = new Hotel(customers, rooms, bookings)
-		let customer = hotel.determineCurrentCustomer()
-		domUpdates.renderPage(customer, hotel, addBooking)
-		createEventListeners(hotel, addBooking)
-}
 
-let createEventListeners = (hotel, addBooking) => {
+let createEventListeners = (hotel, addBooking, getBookings) => {
 	dom.availableRooms.addEventListener('click', (e) => {
-		handleAddBooking(e, hotel, addBooking)
-	})
+		handleAddBooking(e, hotel, addBooking, getBookings)
+	});
 
 	dom.form.addEventListener('input', (e) => {
 		handleBookingForm(e, hotel)
-	})
+	});
+
+	dom.loginForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		submitUserInformation(hotel, addBooking, e);	
+	});
 }
-
-
-// ---- API calls ----
-
-// ---- Date ----
-
 // ---- Event Handlers ----
 
-let handleAddBooking = (e, hotel, addBooking) => {
+let getLoginInfo = (e) => {
+	return Array.from(e.target, (input) => ({
+		[input.name]: input.value
+	})).filter((input) => {
+		return Object.values(input).join('')		
+	}).reduce((acc, input) => {
+		acc[Object.keys(input).join('')] = Object.values(input).join('')
+		return acc
+	}, {})
+}
+
+let submitUserInformation = (hotel, addBooking, e) => {
+	let loginInfo = getLoginInfo(e);
+	let user = hotel.checkLoginInfo(loginInfo['user-name'], loginInfo.password)
+	if(user !== 'Invalid login credentials, Please check your username and password.') {
+		getUser(user.id).then((user) => {
+			hotel.loginUser(user)
+		}).then(() => {
+				domUpdates.renderPage(hotel.currentUser, hotel, addBooking)
+		}).catch((error) => console.log(error))
+	} else {
+		domUpdates.renderUserError(user)
+	}
+}
+
+let handleAddBooking = (e, hotel, addBooking, getBookings) => {
 	if(e.target.dataset.bookingid === 'addBooking') {
 		let data = {
-			"userID": hotel.currentCustomer.id,
+			"userID": hotel.currentUser.id,
 			"date": `${dom.calendar.value.split('-').join('/')}`,
 			"roomNumber": parseInt(e.target.id),
 		} 
 		addBooking(data).then(res => console.log(res)).then(() => {
-			console.log('test')
+			let output = getBookings()
+			return output
+		}).then((data) => {
+			let output = hotel.saveBookings(data.bookings);
+			hotel.bookings = output
+			hotel.currentUser.getCurrentBookings(hotel.bookings, hotel.rooms);
+			let rooms = hotel.checkAvailability(dom.calendar.value);
+			rooms = hotel.filterRoomsByType(dom.selectRoomType.value)
+			domUpdates.renderDashboard(hotel.currentUser, rooms)
 		})
-		// chain .thens to rerender and populate customer data
 	}
 }
 
@@ -59,7 +100,6 @@ let handleBookingForm = (e, hotel) => {
 		hotel.checkAvailability(e.target.value)
 		output = hotel.availableRooms
 		domUpdates.renderAvailableRooms(output)
-		dom.roomType.classList.remove('hidden')
 	} else if(e.target.name === 'type') {
 		output = hotel.filterRoomsByType(e.target.value)
 		domUpdates.renderAvailableRooms(output)

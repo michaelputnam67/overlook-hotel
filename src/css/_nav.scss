@@ -1,9 +1,11 @@
 nav {
+	background-image: url('../images/clouds-with-trees.jpg');
+	background-position: center;
+	background-size: cover;
 	height: 10vh;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	font-size: 1.5em;
-	background-color: rgb(187, 227, 243);
 }

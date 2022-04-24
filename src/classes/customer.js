@@ -8,7 +8,7 @@ class Customer {
 		this.bookings = [];
 	}
 
-	getBookings(bookings, rooms) {
+	getCurrentBookings(bookings, rooms) {
 		this.bookings = bookings.filter((booking) => booking.userID === this.id)
 		this.bookings.forEach(booking => {
 			booking.getRoomInfo(rooms)
