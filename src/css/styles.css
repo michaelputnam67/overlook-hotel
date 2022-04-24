@@ -1,4 +1,7 @@
 nav {
+  background-image: url("../images/clouds-with-trees.jpg");
+  background-position: center;
+  background-size: cover;
   height: 10vh;
   width: 100%;
   display: -webkit-box;
@@ -11,18 +14,16 @@ nav {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1.5em;
-  background-color: #bbe3f3;
 }
 
 * {
-  margin: 0px;
+  font-family: 'Fredoka One', regular;
 }
 
 body {
+  margin: 0;
   height: 100vh;
   width: 100%;
-  background: url("../images/trees-background.jpg");
-  background-size: cover;
   overflow: hidden;
   display: -ms-grid;
   display: grid;
@@ -33,14 +34,22 @@ body {
       grid-template-areas: 'overlap';
 }
 
-body .login {
-  height: 400px;
-  width: 600px;
+.login {
+  background: url("../images/trees-background.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+}
+
+.login section {
   opacity: 80%;
   border-radius: 15px;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: overlap;
   -ms-grid-column-align: center;
       justify-self: center;
   -ms-flex-item-align: center;
@@ -48,14 +57,11 @@ body .login {
       align-self: center;
   place-self: center;
   background: #d6e2d6;
+  height: 400px;
+  width: 600px;
 }
 
-body .login section {
-  height: 100%;
-  width: 100%;
-}
-
-body .login section form {
+.login section form {
   height: 100%;
   width: 100%;
   display: -ms-grid;
@@ -66,7 +72,7 @@ body .login section form {
       grid-template-rows: 1fr .3fr .2fr 1fr;
 }
 
-body .login section form div:nth-child(1) {
+.login section form div:nth-child(1) {
   -ms-grid-row: 1;
       grid-row-start: 1;
   -ms-grid-column-align: center;
@@ -76,7 +82,7 @@ body .login section form div:nth-child(1) {
       align-self: end;
 }
 
-body .login section form div:nth-child(2) {
+.login section form div:nth-child(2) {
   -ms-grid-row: 2;
       grid-row-start: 2;
   -ms-grid-column-align: center;
@@ -86,7 +92,7 @@ body .login section form div:nth-child(2) {
       align-self: center;
 }
 
-body .login section form div:nth-child(3) {
+.login section form div:nth-child(3) {
   -ms-grid-row: 4;
       grid-row-start: 4;
   -ms-grid-column-align: center;
@@ -96,7 +102,7 @@ body .login section form div:nth-child(3) {
       align-self: start;
 }
 
-body .login section form legend {
+.login section form legend {
   color: red;
   -ms-grid-row: 3;
       grid-row-start: 3;
@@ -146,35 +152,36 @@ main .dashboard .sidebar .available-rooms {
 }
 
 main .dashboard .sidebar .available-rooms .booking {
-  background: #1d1d32;
-  border: 2px solid black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  border: grey solid 2px;
+  background-image: url("../images/cabin-in-woods.jpg");
+  background-size: cover;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 40px;
+      grid-template-rows: 1fr 40px;
   height: 200px;
   width: 200px;
 }
 
 main .dashboard .sidebar .available-rooms .booking h3 {
-  color: white;
+  border-radius: 5px;
+  background: white;
+  background-size: cover;
+  opacity: 60%;
+  place-self: center strech;
+  text-align: center;
 }
 
 main .dashboard .sidebar .available-rooms .booking ul {
-  height: 90%;
-  width: 90%;
-  background: #bbe3f3;
+  -ms-flex-item-align: center;
+      align-self: center;
+  background: white;
+  background-size: cover;
+  margin: 5px;
+  opacity: 60%;
   padding: 0;
-  padding-left: 30px;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
@@ -189,6 +196,17 @@ main .dashboard .sidebar .available-rooms .booking ul {
       -ms-flex-pack: center;
           justify-content: center;
   list-style-type: none;
+}
+
+main .dashboard .sidebar .available-rooms .booking button {
+  background: #061a1b;
+  background-size: cover;
+  color: #d0cdcd;
+}
+
+main .dashboard .sidebar .available-rooms .booking button:hover {
+  background: #65b858;
+  color: black;
 }
 
 main .dashboard .current-bookings-header {
@@ -219,56 +237,46 @@ main .dashboard .bookings-container {
       grid-column-end: span 2;
   height: 100vh;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-flow: row;
+  grid-gap: 5px;
   overflow-y: scroll;
 }
 
 main .dashboard .bookings-container .booking {
-  background: #1d1d32;
-  border: 2px solid black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  border: grey solid 2px;
+  background-image: url("../images/cabin-in-woods.jpg");
+  background-size: cover;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 0.2fr 1fr;
+      grid-template-rows: 0.2fr 1fr;
   height: 200px;
   width: 200px;
 }
 
 main .dashboard .bookings-container .booking h3 {
-  color: white;
+  border-radius: 5px;
+  background: white;
+  background-size: cover;
+  opacity: 60%;
+  place-self: center strech;
+  text-align: center;
 }
 
 main .dashboard .bookings-container .booking ul {
-  height: 90%;
-  width: 90%;
-  background: #bbe3f3;
+  -ms-flex-item-align: center;
+      align-self: center;
+  background: white;
+  background-size: cover;
+  margin: 5px;
+  opacity: 60%;
   padding: 0;
-  padding-left: 30px;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
@@ -283,6 +291,17 @@ main .dashboard .bookings-container .booking ul {
       -ms-flex-pack: center;
           justify-content: center;
   list-style-type: none;
+}
+
+main .dashboard .bookings-container .booking button {
+  background: #061a1b;
+  background-size: cover;
+  color: #d0cdcd;
+}
+
+main .dashboard .bookings-container .booking button:hover {
+  background: #65b858;
+  color: black;
 }
 
 .hidden {

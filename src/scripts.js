@@ -1,7 +1,7 @@
 // ---- Imports ----
 import dom from './dom-elements';
 import Hotel from './classes/hotel';
-import './css/styles.css';
+import './css/styles.scss';
 import apiCalls from './apiCalls';
 import domUpdates from './domUpdates';
 import './images/trees-background.jpg';
@@ -9,11 +9,10 @@ import './images/trees-background.jpg';
 let dayjs = require('dayjs')
 
 // ---- API calls ----
-// let getApiCalls = () => {
 let getUser = (id) => {
 	return apiCalls.then(call => {
-			let getUser = call[4]
-		return getUser(id)
+			let getUserData = call[4]
+		return getUserData(id)
 		})
 }	
 
@@ -28,12 +27,8 @@ let getUser = (id) => {
 
 	let loadData = (customers, rooms, bookings, addBooking, getBookings) => {
 		let hotel = new Hotel(customers, rooms, bookings)
-		// hotel.loginUser('customer1', 'overlook2021')
-		// let customer = hotel.currentUser
-
 		createEventListeners(hotel, addBooking, getBookings)
 		}
-// }
 	
 	// ---- Dom Elements ----
 
@@ -51,13 +46,6 @@ let createEventListeners = (hotel, addBooking, getBookings) => {
 		submitUserInformation(hotel, addBooking, e);	
 	});
 }
-
-
-
-// ---- Date ----
-
-
-
 // ---- Event Handlers ----
 
 let getLoginInfo = (e) => {
@@ -85,9 +73,6 @@ let submitUserInformation = (hotel, addBooking, e) => {
 	}
 }
 
-
-
-
 let handleAddBooking = (e, hotel, addBooking, getBookings) => {
 	if(e.target.dataset.bookingid === 'addBooking') {
 		let data = {
@@ -99,11 +84,11 @@ let handleAddBooking = (e, hotel, addBooking, getBookings) => {
 			let output = getBookings()
 			return output
 		}).then((data) => {
-			// updateDataModel(data)
 			let output = hotel.saveBookings(data.bookings);
 			hotel.bookings = output
 			hotel.currentUser.getCurrentBookings(hotel.bookings, hotel.rooms);
 			let rooms = hotel.checkAvailability(dom.calendar.value);
+			rooms = hotel.filterRoomsByType(dom.selectRoomType.value)
 			domUpdates.renderDashboard(hotel.currentUser, rooms)
 		})
 	}
@@ -115,7 +100,6 @@ let handleBookingForm = (e, hotel) => {
 		hotel.checkAvailability(e.target.value)
 		output = hotel.availableRooms
 		domUpdates.renderAvailableRooms(output)
-
 	} else if(e.target.name === 'type') {
 		output = hotel.filterRoomsByType(e.target.value)
 		domUpdates.renderAvailableRooms(output)

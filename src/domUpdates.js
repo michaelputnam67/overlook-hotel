@@ -12,6 +12,7 @@ const domUpdates = {
 	},
 
 	toggleHiddenElements() {
+		// dom.test.classList.remove('body-background')
 		dom.main.classList.remove('hidden')
 		dom.login.classList.add('hidden')
 		dom.dashboard.classList.remove('hidden')
@@ -41,7 +42,7 @@ const domUpdates = {
 		customer.bookings.forEach(booking => {
 			dom.bookingsContainer.innerHTML += `
 				<div class="booking">
-				<h3>Booking:</h3>
+				<h3>   Booking   </h3>
 					<ul>
 						<li>Date: ${booking.date}</li>
 						<li>Room Number: ${booking.roomNumber}</li>
@@ -59,7 +60,7 @@ const domUpdates = {
 	},
 
 	renderFuriousApology() {
-		dom.response.innerText = "We are so sorry, but there are no rooms available that day please select another date"
+		dom.response.innerText = "We are so sorry, but there are no rooms available meeting that criteria!"
 	},
 
 	renderForm(rooms) {

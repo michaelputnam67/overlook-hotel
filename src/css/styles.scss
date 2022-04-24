@@ -3,76 +3,41 @@
 @import './mixins';
 
 
-// @mixin grid() {
-// 	display: grid;
-// 	grid-template-columns: 1fr;
-// 	grid-template-rows: 1fr;
-// 	grid-template-areas: 'overlap';
-// }
-
-// @mixin booking() {
-// 	background: rgb(29, 29, 50);
-// 	border: 2px solid black;
-// 	display: flex;
-// 	justify-content: center;
-// 	align-items: center;
-// 	flex-direction: column;
-// 	height: 200px;
-// 	width: 200px;
-// }
-
-// @mixin test() {
-// 	.booking {
-// 		@include booking();
-// 		h3 {
-// 			color: white;
-// 		}
-// 		ul {
-// 			@include list();
-// 		}
-// 	}
-// }
-
-// @mixin list() {
-// 	height: 90%;
-// 	width: 90%;
-// 	background: rgb(187,227,243);
-// 	padding: 0;
-// 	padding-left: 30px;
-// 	align-items: start;
-// 	display: flex;
-// 	flex-direction: column;
-// 	justify-content: center;
-// 	list-style-type: none;
-// }
 
 * {
-	margin: 0px;
+	font-family: 'Fredoka One', regular;
 }
 
+
 body {
+	margin: 0;
 	height: 100vh;
 	width: 100%;
-	background: url('../images/trees-background.jpg');
-	background-size: cover;
 	overflow: hidden;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
 	grid-template-areas: 'overlap';
+}
+
+
 	.login {
-		height: 400px;
-		width: 600px;
-		opacity: 80%;
-		border-radius: 15px;
-		grid-area: overlap;
-		justify-self: center;
-		align-self: center;
-		place-self: center;
-		background: rgb(214, 226, 214);
+		background: url('../images/trees-background.jpg');
+		background-size: cover;
+		height: 100vh;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
 		section {
-			height: 100%;
-			width: 100%;
+			opacity: 80%;
+			border-radius: 15px;
+			justify-self: center;
+			align-self: center;
+			place-self: center;
+			background: rgb(214, 226, 214);
+			height: 400px;
+			width: 600px;
 			form {
 				height: 100%;
 				width: 100%;
@@ -103,7 +68,6 @@ body {
 			}
 		}
 	}
-}
 
 	main {
 		.dashboard {
@@ -129,7 +93,7 @@ body {
 					grid-template-columns: 1fr 1fr 1fr;
 					grid-auto-flow: row;
 					overflow-y: scroll;
-					@include test();
+					@include test((1fr 40px));
 				}
 			}
 			.current-bookings-header {
@@ -148,17 +112,15 @@ body {
 				grid-column-end: span 2;
 				height: 100vh;
 				width: 100%;
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				align-items: flex-start;
-				align-content: flex-start;
-				justify-content: space-evenly;
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+				grid-auto-flow: row;
+				grid-gap: 5px;
 				overflow-y: scroll;
-				@include test();
-				}
+				@include test((.2fr 1fr));
 			}
 		}
+	}
 
 
 

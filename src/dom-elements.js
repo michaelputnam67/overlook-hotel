@@ -1,5 +1,6 @@
 
 let dom = {
+	selectRoomType: document.getElementById('selectType'),
 	nav: document.getElementById('nav'),
 	main: document.getElementById('main'),
 	loginError: document.getElementById('loginError'),

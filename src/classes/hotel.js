@@ -56,11 +56,10 @@ import Customer from './customer'
 	}
 
 	loginUser(user) {
-		 this.currentUser = this.customers.find((customer) => {
-			 return customer.id === user.id
-		 })
+		this.currentUser = this.customers.find((customer) => {
+			return customer.id === user.id
+		})
 	}
-
 
 	filterRoomsByType(type) {
 		let roomsByType = this.availableRooms
