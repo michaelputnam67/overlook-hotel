@@ -31,18 +31,34 @@ describe('Hotel', () => {
 	it('should store data on all the bookings', () => {
 		expect(hotel.bookings[2].userID).to.equal(bookings[2].userID)
 	})
-
-	it('should be able to determine the currentUser', () => {
-		let username = 'customer1';
-		let password = 'overlook2021';
-		hotel.loginUser(username)
-		expect(hotel.currentUser.name).to.deep.equal(customer.name)
-	})
-
+	
 	it('should let the user know their login information is incorrect', () => {
 		let username = 'customer2';
 		let password = 'ovelok2022';
-		let output = hotel.loginUser(username, password)
+		let output = hotel.checkLoginInfo(username, password)
 		expect(output).to.equal('Invalid login credentials, Please check your username and password.')
 	})
+
+	it('should be able to determine the currentUser', () => {
+		hotel.loginUser(customers[0])
+		expect(hotel.currentUser.name).to.deep.equal(customer.name)
+	})
+
+	it('should be able to check the availability of rooms on a given date', () => {
+		hotel.checkAvailability("2022-02-16")
+		expect(hotel.availableRooms[1].number).to.equal(3)
+	})
+
+	it('should be able to return the available rooms', () => {
+		let availableRooms = hotel.checkAvailability('2022-02-16')
+		expect(availableRooms[1].number).to.equal(3)
+	})
+
+	it('should be able to filter rooms by type', () => {
+		hotel.checkAvailability('2022-02-16')
+		let output = hotel.filterRoomsByType("single room")
+		expect(output.length).to.equal(1)
+		expect(output[0].number).to.equal(rooms[2].number)
+	})
+
 })
