@@ -7,9 +7,12 @@
 	margin: 0;
 }
 
+
+
+
+
+
 body {
-	background-color: rgb(128, 128, 128);
-	margin: 0;
 	height: 100vh;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -81,6 +84,7 @@ body {
 }
 
 main {
+	margin: 2px;
 	background-image: url('../images/lodge.jpg');
 	background-size: cover;
 	opacity: 90%;
@@ -90,7 +94,9 @@ main {
 		display: grid;
 		grid-template-columns: 1fr .5fr 1fr;
 		grid-template-rows: .1fr .1fr 1fr;
+		grid-gap: 20px;
 		.sidebar {
+			height: 100%;
 			width: 100%;
 			grid-row-start: 1;
 			grid-row-end: span 3;
@@ -122,9 +128,9 @@ main {
 				width: 100%;
 				display: grid;
 				justify-content: center;
-				grid-template-columns: repeat(2, minmax(250px, 1fr));
-				grid-template-rows: repeat(13, minmax(250px, 1fr));
-				overflow-y: auto;
+				grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+				grid-auto-rows: minmax(250px, 1fr);
+				overflow: auto;
 				grid-gap: 5px;
 				@include bookingDiv((1fr 40px) );
 			}
@@ -142,12 +148,17 @@ main {
 			grid-column: 1 / span 2;
 			grid-row: 2 / span 2;
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			grid-auto-rows: minmax(200px, auto);
 			grid-gap: 5px;
-			overflow-y: auto;
+			overflow: auto;
 			@include bookingDiv((.2fr 1fr) );
 		}
 	}
+}
+
+.total-cost {
+	font-size: 25px;
 }
 
 .hidden {
