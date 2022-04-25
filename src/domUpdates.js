@@ -37,11 +37,13 @@ const domUpdates = {
 	},
 
 	renderCurrentBookings(customer) {
+		customer.sortBookingsByDate()
 		dom.bookingsContainer.innerHTML = ''
 		customer.bookings.forEach(booking => {
+			let roomClass = booking.roomInfo.bedSize.split(' ').concat(booking.roomInfo.roomType.split(' ')).join('-')
 			dom.bookingsContainer.innerHTML += `
-				<div class="booking">
-				<h3>   Date: ${booking.date}   </h3>
+				<div class="booking ${roomClass}">
+				<h3>Date: ${booking.date}</h3>
 					<ul>
 						<li>Room Number: ${booking.roomNumber}</li>
 						<li>${booking.roomInfo.roomType.toUpperCase()}</li>

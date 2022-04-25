@@ -39,28 +39,28 @@
         <p class="total-cost" id="totalCost">Total Expenditures</p>
       </div>
       <sidebar class="sidebar">
-          <div class="add-booking-form-container">
-            <form id="form">
-              <h2>Add Booking</h2>
-              <div class="calendar">
-                <label for="select">Check Availability:</label><br>
-                <input type="date" id="select" name="select-date" required>
-              </div>
-              <div class="roomtype hidden" id="roomType">
-                <label for="selectType">Choose Room Type:</label><br>
-                <select type="dropdown" id="selectType" name="type" >
-                  <option value="">--Please choose an option--</option>
-                  <option value="residential suite">Residential Suite</option>
-                  <option value="suite">Suite</option>
-                  <option value="single room">Single Room</option>
-                  <option value="junior suite">Junior Suite</option>
-                </select>
-              </div>
-            </form>        
-            <div >    
-              <p id="response"></p>
+        <div class="add-booking-form-container">
+          <form id="form">
+            <h2>Add Booking</h2>
+            <div class="calendar">
+              <label for="select">Check Availability:</label><br>
+              <input type="date" id="select" name="select-date" min="2020-01-01" max="2030-01-01" required>
             </div>
+            <div class="roomtype hidden" id="roomType">
+              <label for="selectType">Choose Room Type:</label><br>
+              <select type="dropdown" id="selectType" name="type" >
+                <option value="">--Please choose an option--</option>
+                <option value="residential suite">Residential Suite</option>
+                <option value="suite">Suite</option>
+                <option value="single room">Single Room</option>
+                <option value="junior suite">Junior Suite</option>
+              </select>
+            </div>
+          </form>        
+          <div>    
+            <p id="response"></p>
           </div>
+        </div>
         <section class="available-rooms" id="availableRooms"></section>
       </sidebar>
       <section class="bookings-container" id="bookingsContainer">
