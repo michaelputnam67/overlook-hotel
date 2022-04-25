@@ -7,11 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <title>OverLook Hotel</title>
 </head>
-<title>OverLook Hotel</title>
 <body class="body-background">
   <div class="login" id="login">
     <section>
+      <h1>Welcome to the ReTreet</h1>
       <form id="loginForm">
         <div>
           <label for="userName">Username</label>
@@ -35,15 +36,16 @@
     <section class="dashboard hidden" id="dashboard">
       <div class="current-bookings-header" id="currentBookingsHeader">
         <h1>Bookings</h1>
-        <p id="totalCost">Total Expenditures</p>
+        <p class="total-cost" id="totalCost">Total Expenditures</p>
       </div>
       <sidebar class="sidebar">
-        <div>
-          <div>
+          <div class="add-booking-form-container">
             <form id="form">
               <h2>Add Booking</h2>
-              <label for="select">Check Availability:</label><br>
-              <input type="date" id="select" name="select-date" required><br>
+              <div class="calendar">
+                <label for="select">Check Availability:</label><br>
+                <input type="date" id="select" name="select-date" required>
+              </div>
               <div class="roomtype hidden" id="roomType">
                 <label for="selectType">Choose Room Type:</label><br>
                 <select type="dropdown" id="selectType" name="type" >
@@ -59,11 +61,10 @@
               <p id="response"></p>
             </div>
           </div>
-        </div>
         <section class="available-rooms" id="availableRooms"></section>
       </sidebar>
-        <section class="bookings-container" id="bookingsContainer">
-        </section>
+      <section class="bookings-container" id="bookingsContainer">
+      </section>
     </section>
   </main>
   <script src="bundle.js"></script>

@@ -101,11 +101,12 @@ let updateBookingData = (data, hotel) => {
 	return rooms;
 }
 
+
 let handleBookingForm = (e, hotel) => {
 	let output;
 	if(e.target.name === "select-date") {
-		hotel.checkAvailability(e.target.value)
-		output = hotel.availableRooms
+		output = hotel.checkAvailability(e.target.value)
+		output = hotel.filterRoomsByType(dom.selectRoomType.value)
 		domUpdates.renderAvailableRooms(output)
 	} else if(e.target.name === 'type') {
 		output = hotel.filterRoomsByType(e.target.value)
