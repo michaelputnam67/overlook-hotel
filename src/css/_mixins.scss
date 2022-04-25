@@ -5,11 +5,18 @@
 	grid-template-areas: 'overlap';
 }
 
-// @mixin hover() {
-// 	button:hover {
-// 		background: rgb(94, 161, 84)
-// 	}
-// }
+@mixin button() {
+	background: rgb(6,26,27);
+	background-size: cover;
+	color: rgb(208, 205, 205);
+}
+
+@mixin hover() {
+	button:hover {
+		background: rgb(101,184,88);
+		color: black;
+	}
+}
 
 @mixin booking($rows) {
 	background-image: url('../images/cabin-in-woods.jpg');
@@ -17,11 +24,9 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: $rows;
-	height: 200px;
-	width: 200px;
 }
 
-@mixin test($rows) {
+@mixin bookingDiv($rows ) {
 .booking {
 		border: grey solid 2px;
 		@include booking($rows);
@@ -35,27 +40,19 @@
 		}
 		ul {
 			align-self: center;
-
 			@include list();
 		} 
 		button {
-			background: rgb(6,26,27);
-			background-size: cover;
-			color: rgb(208, 205, 205);
+		@include button();
 		}
-		button:hover {
-			background: rgb(101,184,88);
-			color: black;
-		}
+		@include hover();
 	}
 }
 
 @mixin list() {
 	background: white;
 	background-size: cover;
-	margin: 5px;
 	opacity: 60%;
-	padding: 0;
 	align-items: start;
 	display: flex;
 	flex-direction: column;

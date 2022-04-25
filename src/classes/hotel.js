@@ -27,6 +27,10 @@ import Customer from './customer'
 		return this.availableRooms
 	}
 
+	// sortRoomsByDate() {
+
+	// }
+
 	saveBookings(bookings) {
 		return bookings.map((booking) => {
 			return new Booking(booking)
