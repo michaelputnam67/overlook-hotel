@@ -3,7 +3,7 @@ let daysjs = require('dayjs')
 import './images/trees-background.jpg'
 
 const domUpdates = {
-	renderPage (customer, hotel, addBooking) {
+	renderPage (customer) {
 		this.toggleHiddenElements();
 		this.renderNav(customer)
 		this.renderCurrentBookings(customer)
@@ -12,7 +12,6 @@ const domUpdates = {
 	},
 
 	toggleHiddenElements() {
-		// dom.test.classList.remove('body-background')
 		dom.main.classList.remove('hidden')
 		dom.login.classList.add('hidden')
 		dom.dashboard.classList.remove('hidden')
@@ -42,9 +41,8 @@ const domUpdates = {
 		customer.bookings.forEach(booking => {
 			dom.bookingsContainer.innerHTML += `
 				<div class="booking">
-				<h3>   Booking   </h3>
+				<h3>   Date: ${booking.date}   </h3>
 					<ul>
-						<li>Date: ${booking.date}</li>
 						<li>Room Number: ${booking.roomNumber}</li>
 						<li>${booking.roomInfo.roomType.toUpperCase()}</li>
 						<li>Bed Size: ${booking.roomInfo.bedSize.toUpperCase()}</li>
@@ -53,8 +51,13 @@ const domUpdates = {
 				</div>`
 		})
 	},
+	renderConfirmation(response, e) {
+		dom.response.innerText = response.message.replace('posted', 'booked')
+		e.target.style.background = 'rgb(101,184,88)'
+		e.target.style.color = 'black'
+	},
 
-	renderSideBar(customer) {
+	renderSideBar() {
 		dom.calendar.value = `${daysjs(Date.now()).format('YYYY-MM-DD')}`
 		dom.calendar.min = `${daysjs(Date.now()).format('YYYY-MM-DD')}`
 	},

@@ -39,22 +39,26 @@
       </div>
       <sidebar class="sidebar">
         <div>
-          <form id="form">
-            <h2>Add Booking</h2>
-            <label for="select">Check Availability:</label><br>
-            <input type="date" id="select" name="select-date" required><br>
-            <div class="roomtype hidden" id="roomType">
-              <label for="selectType">Choose Room Type:</label><br>
-              <select type="dropdown" id="selectType" name="type" >
-                <option value="">--Please choose an option--</option>
-                <option value="residential suite">Residential Suite</option>
-                <option value="suite">Suite</option>
-                <option value="single room">Single Room</option>
-                <option value="junior suite">Junior Suite</option>
-              </select>
+          <div>
+            <form id="form">
+              <h2>Add Booking</h2>
+              <label for="select">Check Availability:</label><br>
+              <input type="date" id="select" name="select-date" required><br>
+              <div class="roomtype hidden" id="roomType">
+                <label for="selectType">Choose Room Type:</label><br>
+                <select type="dropdown" id="selectType" name="type" >
+                  <option value="">--Please choose an option--</option>
+                  <option value="residential suite">Residential Suite</option>
+                  <option value="suite">Suite</option>
+                  <option value="single room">Single Room</option>
+                  <option value="junior suite">Junior Suite</option>
+                </select>
+              </div>
+            </form>        
+            <div >    
+              <p id="response"></p>
             </div>
-            <p id="response"></p>
-          </form>
+          </div>
         </div>
         <section class="available-rooms" id="availableRooms"></section>
       </sidebar>
