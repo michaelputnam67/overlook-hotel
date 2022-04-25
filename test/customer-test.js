@@ -9,6 +9,9 @@ describe('Customer', () => {
 	let customer, booking, room;
 
 	beforeEach(() => {
+		bookings = bookings.map((booking) => {
+			return new Booking(booking)
+		})
 		customer = new Customer(customers[0])
 		booking = new Booking(bookings[0])
 		room = new Room(rooms[0])
@@ -24,8 +27,14 @@ describe('Customer', () => {
 	})
 
 	it('should be able to store bookings unique to the customer', () => {
-		customer.getBookings(bookings, rooms)
+		customer.getCurrentBookings(bookings, rooms)
 		expect(customer.bookings[0].id).to.equal(booking.id);
+	})
+
+	it('should be able to calculate total expenditures', () => {
+		customer.getCurrentBookings(bookings, rooms)
+		let output = customer.calculateTotalExpenditures()
+		expect(output).to.equal(1326.92)
 	})
 
 

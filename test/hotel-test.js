@@ -6,7 +6,7 @@ import Customer from '../src/classes/customer'
 import Hotel from '../src/classes/hotel'
 import {customers, bookings, rooms} from '../src/sampleData/sample-data'
 
-describe.only('Hotel', () => {
+describe('Hotel', () => {
 	let customer, booking, room, hotel;
 
 	beforeEach(() => {
@@ -35,7 +35,7 @@ describe.only('Hotel', () => {
 	it('should be able to determine the currentUser', () => {
 		let username = 'customer1';
 		let password = 'overlook2021';
-		hotel.loginUser(username, password)
+		hotel.loginUser(username)
 		expect(hotel.currentUser.name).to.deep.equal(customer.name)
 	})
 

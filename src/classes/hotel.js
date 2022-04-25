@@ -60,6 +60,7 @@ import Customer from './customer'
 	}
 
 	loginUser(user) {
+		console.log(user)
 		this.currentUser = this.customers.find((customer) => {
 			return customer.id === user.id
 		})
