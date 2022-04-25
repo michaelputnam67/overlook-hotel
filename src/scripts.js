@@ -25,6 +25,11 @@ apiCalls.then(call => {
 
 let loadData = (customers, rooms, bookings, addBooking, getBookings) => {
 	let hotel = new Hotel(customers, rooms, bookings)
+	hotel.loginUser({
+		id: 1,
+		name: "Leatha Ullrich"
+		})
+	domUpdates.renderPage(hotel.currentUser, hotel, addBooking)
 	createEventListeners(hotel, addBooking, getBookings)
 }
 	
@@ -39,10 +44,10 @@ let createEventListeners = (hotel, addBooking, getBookings) => {
 		handleBookingForm(e, hotel)
 	});
 
-	dom.loginForm.addEventListener('submit', (e) => {
-		e.preventDefault();
-		submitUserInformation(hotel, addBooking, e);	
-	});
+	// dom.loginForm.addEventListener('submit', (e) => {
+	// 	e.preventDefault();
+	// 	submitUserInformation(hotel, addBooking, e);	
+	// });
 }
 
 // ---- Event Handlers ----
@@ -58,19 +63,23 @@ let getLoginInfo = (e) => {
 	}, {})
 }
 
-let submitUserInformation = (hotel, addBooking, e) => {
-	let loginInfo = getLoginInfo(e);
-	let user = hotel.checkLoginInfo(loginInfo['user-name'], loginInfo.password)
-	if(user !== 'Invalid login credentials, Please check your username and password.') {
-		getUser(user.id).then((user) => {
-			hotel.loginUser(user)
-		}).then(() => {
-				domUpdates.renderPage(hotel.currentUser, hotel, addBooking)
-		}).catch((error) => console.log(error))
-	} else {
-		domUpdates.renderUserError(user)
-	}
-}
+
+
+
+
+// let submitUserInformation = (hotel, addBooking, e) => {
+// 	let loginInfo = getLoginInfo(e);
+// 	let user = hotel.checkLoginInfo(loginInfo['user-name'], loginInfo.password)
+// 	if(user !== 'Invalid login credentials, Please check your username and password.') {
+// 		getUser(user.id).then((user) => {
+// 			hotel.loginUser(user)
+// 		}).then(() => {
+// 				domUpdates.renderPage(hotel.currentUser, hotel, addBooking)
+// 		}).catch((error) => console.log(error))
+// 	} else {
+// 		domUpdates.renderUserError(user)
+// 	}
+// }
 
 let handleAddBooking = (e, hotel, addBooking, getBookings) => {
 	e.target.disabled = true;
