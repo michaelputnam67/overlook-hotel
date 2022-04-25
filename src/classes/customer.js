@@ -15,8 +15,7 @@ class Customer {
 			let checkDates = (a, b, i = 0) => {
 				return (bookingADate[a] > bookingBDate[b]) ? 1 : (bookingADate[a] < bookingBDate[b]) ? -1 : (i === 2) ? 0 :	checkDates(i+1, i+1, i+1)
 			}
-			let output = checkDates(0, 0, 0)
-		 return output
+			return checkDates(0, 0, 0)
 	 })
  }
 
