@@ -1,99 +1,171 @@
-# OVERLOOK HOTEL
 
-## Clone This Repo
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <a href="#using-the-application">Using the Application</a>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#planning-resources">Planning Resources</a></li>
+  </ol>
+</details>
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+<!-- ABOUT THE PROJECT -->
+# Overlook Hotel
 
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+### About The Project
 
-## Setup
+![Overlook Hotel](https://user-images.githubusercontent.com/91028440/165348855-e78b53e2-46b1-483f-ae48-99f57a484b34.png)
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
+Welcome to the Overlook Hotel. Login book a room and relax. 
 
-Then install the library dependencies. Run:
 
-```bash
-npm install
-```
+<p align="right">(<a href="#overlook-hotel">back to top</a>)</p>
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
 
-## Where to Add Your Code
 
-### JavaScript
+### Built With
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+In this project, I used these tools to help build, maintain, and populate the Web Application.
+I was tasked with utilizing data from an API as well as the WebPack bundler.
 
-**Create all of your feature code files in the `src` directory.**
+#### Languages
+* Javascript
+* HTML
+* CSS
+* SCSS
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+#### Frameworks/Libraries
+* [Webpack](https://webpack.js.org/)
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
 
-### HTML
 
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
+<p align="right">(<a href="#overlook-hotel">back to top</a>)</p>
 
-### Images
 
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
 
-## How to View Your Code in Action
+<!-- GETTING STARTED -->
+## Getting Started
 
-In the terminal, run:
+### Set Up Instructions
+1. Clone this repo to your local machine
+2. `cd ` into `overlook-hotel`
+3. Then, run NPM install from your command line: `npm install `
+    - Do not run `npm audit fix --force`
+4. After you have run `npm install` inside of your copy of this repo, run:
+`npm start`
+This will run webpack in the terminal so you can view and use the application in your browser. Your terminal will likely display a large block of text as seen below:
+![Local Host Link](https://user-images.githubusercontent.com/91028440/165350563-e4155470-f436-4aeb-bcf0-708342252770.png)
 
-```bash
-npm start
-```
+5. Find the line that says `Project is running at http://localhost:8080/` Copy and paste that URL into your browser into your browser or use `cmd + click`. You should have the application set up and ready to use!
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+6. Make sure that you type `Control + C` in your terminal when you are done using the application. This ensure the server will stop running before your close your Terminal.
 
-```bash
-Project is running at http://localhost:8080/
-```
+### Using the Application
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
+Now that we are all set up for the application, its time for its actual use! When you load into the page, You are met with a login page.
 
----
+![Login Page](https://user-images.githubusercontent.com/91028440/165348855-e78b53e2-46b1-483f-ae48-99f57a484b34.png)
 
-## Test Files Organization
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
+Please provide a username and password. For the purposes of this application please use the password: `overlook2021` and a username that conforms to the following style: `customer[1-50]`. The press the login button. You will then be directed to a customer dashboard where you will be greeted.
 
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
+![Customer Dashboard](https://user-images.githubusercontent.com/91028440/165351479-5d3c705f-9d32-4ae6-9699-1b801335abee.png)
 
-## Running Your Tests
+If you click or tab onto the calendar a drop down menu of available dates will be displayed. please choose a date. Once a date has been chosen available rooms will be displayed and then an option to sort these rooms by type will be available. As well as a message informing the user as to the number of available rooms.
 
-Run your test suite using the command:
+![Calendar](https://user-images.githubusercontent.com/91028440/165352395-ec457e60-fc23-4b03-a9f4-21f3d4425d00.png)
 
-```bash
-npm test
-```
+![Room Type](https://user-images.githubusercontent.com/91028440/165352551-688b34c2-8c20-4310-aaee-e7c2b2b3e6a2.png)
 
-The test results will output to the terminal.
+Tabbing onto or clicking the Room Type drop down menu will will several room options. Once one of these options is selected the available rooms will be updated. If there are no rooms available the user will be notified.
 
----
+![Availability Response](https://user-images.githubusercontent.com/91028440/165359699-19eb5e8f-b783-456d-b595-a31a6aba2dd1.png)
 
-## Linting Your Code
+New bookings will be populated in the customer bookings section on the lefthand side of the page in the order of date. 
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
 
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
+<p align="right">(<a href="#overlook-hotel">back to top</a>)</p>
 
-## Webpack?
 
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
 
-## Deploying to GitHub Pages
+<!-- USAGE EXAMPLES -->
+## Usage
 
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
+When we use this application, we have a couple tools to utilize. we have the ability to filter based on date and room-type. This application has all of the information
+someone would hopefully need to successfully plan for their weekend getaway, and adds the ability to create a list of saved bookings to keep track of. 
 
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
 
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+
+<p align="right">(<a href="#overlook-hotel">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Draft classes
+- [x] Create User Dashboard
+- [x] Build out fetch requests
+- [x] Connect data model, api, and Dom
+- [x] Add Login Page
+- [ ] Add Manager functionality
+
+
+
+<p align="right">(<a href="#overlook-hotel">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Project Credits -
+[Michael Putnam](https://github.com/michaelputnam67)
+
+Project Git-hub Link: [https://github.com/michaelputnam67/overlook-hotel](https://michaelputnam67.github.io/overlook-hotel/)
+
+
+
+<p align="right">(<a href="#overlook-hotel">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+
+* [Turing School of Software & Design](https://turing.edu/)
+* [GitHub Pages](https://pages.github.com)
+* [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-basics-browser-support)
+* [Dev Ed Sass Video](https://www.youtube.com/watch?v=Zz6eOVaaelI&t=5s)
+
+
+
+<p align="right">(<a href="#overlook-hotel">back to top</a>)</p>
+
+
+<!-- PLANNING RESOURCES -->
+## Planning Resources
+<!-- WIREFRAME -->
+
+* [Fig jam Organization Board](https://www.figma.com/file/IgxaBquQFvvEVlH45JQ1Ub/Overlook-Hotel-Mod2-Project?node-id=0%3A1)
+
+* [Project Specs](https://frontend.turing.edu/projects/overlook.html)
+
+* [Project Board](https://github.com/michaelputnam67/overlook-hotel/projects/1)
+
+
+<p align="right">(<a href="#overlook-hotel">back to top</a>)</p>
