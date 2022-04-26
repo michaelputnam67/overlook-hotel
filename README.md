@@ -1,4 +1,3 @@
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -20,7 +19,6 @@
     <li><a href="#planning-resources">Planning Resources</a></li>
   </ol>
 </details>
-
 
 <!-- ABOUT THE PROJECT -->
 # Overlook Hotel
@@ -166,6 +164,8 @@ Project Git-hub Link: [https://github.com/michaelputnam67/overlook-hotel](https:
 * [Project Specs](https://frontend.turing.edu/projects/overlook.html)
 
 * [Project Board](https://github.com/michaelputnam67/overlook-hotel/projects/1)
+
+* [Coolors](https://coolors.co/75dddd-508991-172a3a-004346-09bc8a)
 
 
 <p align="right">(<a href="#overlook-hotel">back to top</a>)</p>

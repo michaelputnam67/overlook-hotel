@@ -6,14 +6,14 @@
 }
 
 @mixin button() {
-	background: rgb(6,26,27);
+	background: $color3;
 	background-size: cover;
 	color: rgb(208, 205, 205);
 }
 
 @mixin hover() {
 	button:hover {
-		background: rgb(101,184,88);
+		background: $color5;
 		color: black;
 	}
 }
@@ -28,14 +28,18 @@
 
 @mixin bookingDiv($rows ) {
 .booking {
-		border: grey solid 2px;
+		border: $color2;
 		@include booking($rows);
-		h3 {
+		.booking-date {
 			border-radius: 5px;
-			background: white;
+			background: $color2;
+			opacity: 90%;
 			background-size: cover;
-			opacity: 60%;
-			place-self: center strech;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		h3 {
 			text-align: center;
 		}
 		ul {
@@ -50,9 +54,9 @@
 }
 
 @mixin list() {
-	background: white;
+	background: $color2;
 	background-size: cover;
-	opacity: 60%;
+	opacity: 90%;
 	align-items: start;
 	display: flex;
 	flex-direction: column;
