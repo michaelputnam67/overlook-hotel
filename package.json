@@ -5,8 +5,9 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/turingschool-examples/webpack-starter-kit.git"
+    "url": "git+https://github.com/michaelputnam67/overlook-hotel.git"
   },
+  "homepage": "http://michaelputnam67.github.io/overlook-hotel",
   "author": "Turing School of Software and Design",
   "license": "MIT",
   "devDependencies": {
@@ -14,6 +15,7 @@
     "css-loader": "^5.2.6",
     "eslint": "^7.27.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.2.3",
     "mocha": "^8.4.0",
     "mochapack": "^2.1.2",
     "sass": "^1.50.1",
@@ -27,7 +29,9 @@
     "start": "webpack serve",
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "dayjs": "^1.11.1"
