@@ -71,6 +71,8 @@ This will run webpack in the terminal so you can view and use the application in
 
 6. Make sure that you type `Control + C` in your terminal when you are done using the application. This ensure the server will stop running before your close your Terminal.
 
+7. In order to use this application as intended you will need to run the overlook-hotel api on your local device. Please use the following api: ![overlook server](https://github.com/turingschool-examples/overlook-api)
+
 ### Using the Application
 
 Now that we are all set up for the application, its time for its actual use! When you load into the page, You are met with a login page.
